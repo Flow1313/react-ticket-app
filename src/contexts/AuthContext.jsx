@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Check for existing session on app start
   useEffect(() => {
     const checkAuthStatus = () => {
       try {
@@ -37,8 +38,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // For demo purposes - in real app, verify credentials with backend
       const userData = {
         id: '1',
         name: 'Demo User',
@@ -57,6 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (name, email, password) => {
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const userData = {
@@ -79,6 +83,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem('ticketapp_session');
+    localStorage.removeItem('ticketapp_tickets'); // Optional: clear tickets on logout
   };
 
   const value = {
